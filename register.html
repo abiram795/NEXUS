@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Nexus Luxe</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    Join the Atelier | Enjoy complimentary delivery and early access privileges
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-badge">N</span>
+        <span>NEXUS</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Shop Catalog</a></li>
+          <li><a href="cart.html" class="nav-link">Shopping Bag</a></li>
+          <li><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="action-btn theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+
+        <a href="cart.html" class="action-btn cart-icon-btn" title="Shopping Cart" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span class="cart-badge-count" style="display:none;">0</span>
+        </a>
+
+        <div class="header-user-slot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="site-container">
+      
+      <div class="auth-wrapper">
+        <div class="auth-header">
+          <span class="auth-brand-pill">Client Registration</span>
+          <h1 class="auth-title">Create Account</h1>
+          <p class="auth-subtitle">Unlock personalized curation and accelerated checkout.</p>
+        </div>
+
+        <form id="customerRegisterForm">
+          <div class="form-group">
+            <label for="regFullName">Full Legal Name *</label>
+            <input type="text" id="regFullName" class="form-control" required placeholder="e.g. Jordan Smith">
+          </div>
+
+          <div class="form-group">
+            <label for="regEmail">Email Address *</label>
+            <input type="email" id="regEmail" class="form-control" required placeholder="jordan.smith@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="regPhone">Contact Phone Number</label>
+            <input type="tel" id="regPhone" class="form-control" placeholder="+1 (555) 000-0000">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="regPassword">Password *</label>
+              <input type="password" id="regPassword" class="form-control" required minlength="6" placeholder="At least 6 characters">
+            </div>
+            <div class="form-group">
+              <label for="regConfirmPassword">Confirm Password *</label>
+              <input type="password" id="regConfirmPassword" class="form-control" required minlength="6" placeholder="Re-enter password">
+            </div>
+          </div>
+
+          <div class="checkbox-row">
+            <label class="checkbox-label">
+              <input type="checkbox" id="regTerms" checked required>
+              <span>I agree to the Terms of Service and Privacy Policy</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Complete Registration
+          </button>
+        </form>
+
+        <div class="auth-footer">
+          Already have an active account? <a href="login.html">Sign In</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Nexus Commerce Inc. All rights reserved.</div>
+        <div>Encrypted Customer Authentication</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
+

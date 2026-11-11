@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Fulfillment Management | Nexus Luxe Admin</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar" style="background-color: #1e1b4b;">
+    Logistics & Fulfillment Center | Real-time Customer Parcel Dispatches
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="admin-dashboard.html" class="brand-logo">
+        <span class="logo-badge" style="background: linear-gradient(135deg, #1e293b, #0f172a);">N</span>
+        <span>NEXUS <small style="font-size: 0.75rem; color: var(--accent); font-weight: 700; margin-left: 0.25rem;">ADMIN CONSOLE</small></span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link" target="_blank">View Live Storefront &rarr;</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-btn theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+
+        <a href="index.html" class="btn btn-outline btn-sm">Storefront</a>
+        <button class="btn btn-ghost btn-sm text-danger" onclick="Storage.logoutAdmin(); window.location.href='admin-login.html';">Sign Out</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="site-container admin-layout-wrapper">
+      
+      <!-- Top Navigation Tabs -->
+      <div class="admin-top-nav">
+        <div class="admin-nav-tabs">
+          <a href="admin-dashboard.html" class="admin-nav-tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+            Overview
+          </a>
+          <a href="admin-products.html" class="admin-nav-tab">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+            Products & Inventory
+          </a>
+          <a href="admin-orders.html" class="admin-nav-tab active">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            Orders & Fulfillment
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Orders Card -->
+      <div class="admin-card-section">
+        <div class="admin-section-header">
+          <div>
+            <h3>Fulfillment & Dispatch Queue</h3>
+            <p class="text-muted">Review incoming customer orders, manage statuses, and update transit tracking milestones.</p>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="admin-toolbar-row">
+          <div class="admin-search-box">
+            <input type="text" id="adminOrderSearch" class="form-control" placeholder="Search by Order ID, client name, or email...">
+          </div>
+          <div style="width: 200px;">
+            <select id="adminOrderStatusFilter" class="form-control">
+              <option value="all">All Statuses</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped / In Transit</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div style="overflow-x: auto;">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Order Ref</th>
+                <th>Client & Contact</th>
+                <th>Date Placed</th>
+                <th>Purchased Items</th>
+                <th>Total (USD)</th>
+                <th>Fulfillment Status</th>
+                <th>Operations</th>
+              </tr>
+            </thead>
+            <tbody id="adminOrdersTableBody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Update Status Modal Dialog -->
+  <div class="modal-overlay" id="orderStatusModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 style="font-size: 1.35rem; font-weight: 800;">Update Fulfillment Status</h3>
+        <button class="modal-close" id="closeOrderModalBtn">&times;</button>
+      </div>
+
+      <form id="updateOrderStatusForm">
+        <p id="orderModalRef" style="font-weight: 700; color: var(--accent); margin-bottom: 1.5rem;">Order Reference</p>
+
+        <div class="form-group">
+          <label for="orderNewStatusSelect">Set New Fulfillment Status *</label>
+          <select id="orderNewStatusSelect" class="form-control" required>
+            <option value="Processing">Processing (Packaging in warehouse)</option>
+            <option value="Shipped">Shipped (Handed to regional carrier)</option>
+            <option value="Delivered">Delivered (Successfully delivered to doorstep)</option>
+            <option value="Cancelled">Cancelled (Order terminated)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="orderStatusNote">Milestone Activity Note (Optional)</label>
+          <textarea id="orderStatusNote" class="form-control" rows="3" placeholder="e.g. Scanned at regional sorting facility in Chicago, IL."></textarea>
+          <small class="text-muted">This note will appear immediately in the customer's live tracking timeline.</small>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1.5rem;">
+          <button type="button" class="btn btn-outline" onclick="document.getElementById('orderStatusModal').classList.remove('open')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save & Broadcast Status</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Nexus Commerce Inc. All rights reserved.</div>
+        <div>Fulfillment Operations Management</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
+

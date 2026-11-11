@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Checkout | Nexus Luxe</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    PCI-DSS 256-Bit Encrypted Simulated Checkout | Guaranteed Secure Transaction
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="site-container header-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="logo-badge">N</span>
+        <span>NEXUS</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="products.html" class="nav-link">Shop Catalog</a></li>
+          <li><a href="cart.html" class="nav-link">Shopping Bag</a></li>
+          <li><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="action-btn theme-toggle-btn" title="Toggle theme" aria-label="Toggle theme">
+          <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        </button>
+
+        <a href="cart.html" class="action-btn cart-icon-btn" title="Shopping Cart" aria-label="Shopping Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+          <span class="cart-badge-count" style="display:none;">0</span>
+        </a>
+
+        <div class="header-user-slot"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="site-container">
+      
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb-nav">
+        <a href="index.html">Home</a>
+        <span class="breadcrumb-separator">/</span>
+        <a href="cart.html">Shopping Bag</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">Checkout</span>
+      </nav>
+
+      <form id="checkoutForm" class="checkout-page-grid">
+        <!-- Form Details Column -->
+        <div class="checkout-main-form">
+
+          <!-- Step 1: Shipping Address -->
+          <div class="checkout-step-section">
+            <div class="step-header">
+              <span class="step-number">1</span>
+              <h2 class="step-title">Shipping & Contact Details</h2>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="shipFullName">Full Name *</label>
+                <input type="text" id="shipFullName" class="form-control" placeholder="e.g. Alex Morgan" required>
+              </div>
+              <div class="form-group">
+                <label for="shipEmail">Email Address *</label>
+                <input type="email" id="shipEmail" class="form-control" placeholder="alex.morgan@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="shipPhone">Phone Number *</label>
+                <input type="tel" id="shipPhone" class="form-control" placeholder="+1 (555) 234-5678" required>
+              </div>
+              <div class="form-group">
+                <label for="shipCountry">Country *</label>
+                <select id="shipCountry" class="form-control" required>
+                  <option value="United States">United States</option>
+                  <option value="Canada">Canada</option>
+                  <option value="United Kingdom">United Kingdom</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Japan">Japan</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="shipStreet">Street Address *</label>
+              <input type="text" id="shipStreet" class="form-control" placeholder="742 Evergreen Terrace, Apt / Suite 4B" required>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="shipCity">City *</label>
+                <input type="text" id="shipCity" class="form-control" placeholder="Springfield" required>
+              </div>
+              <div class="form-group">
+                <label for="shipState">State / Province *</label>
+                <input type="text" id="shipState" class="form-control" placeholder="Oregon" required>
+              </div>
+              <div class="form-group">
+                <label for="shipZip">Postal / ZIP Code *</label>
+                <input type="text" id="shipZip" class="form-control" placeholder="97477" required>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: Payment Method -->
+          <div class="checkout-step-section">
+            <div class="step-header">
+              <span class="step-number">2</span>
+              <h2 class="step-title">Payment Authorization</h2>
+            </div>
+
+            <div class="payment-methods-grid">
+              <label class="payment-method-card">
+                <input type="radio" name="paymentMethod" value="card" checked>
+                <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+                <span class="method-name">Credit Card</span>
+              </label>
+
+              <label class="payment-method-card">
+                <input type="radio" name="paymentMethod" value="paypal">
+                <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13l2-6h5a4 4 0 0 1 0 8h-4l-1 5H8l2-7z"/><path d="M6 17l1.5-4.5H12"/></svg>
+                <span class="method-name">PayPal Express</span>
+              </label>
+
+              <label class="payment-method-card">
+                <input type="radio" name="paymentMethod" value="cod">
+                <svg class="method-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+                <span class="method-name">Cash on Delivery</span>
+              </label>
+            </div>
+
+            <!-- Card Fields -->
+            <div id="creditCardFields" class="payment-details-box">
+              <div class="form-group">
+                <label for="cardName">Cardholder Name *</label>
+                <input type="text" id="cardName" class="form-control" placeholder="Alex Morgan" value="Alex Morgan">
+              </div>
+              <div class="form-group">
+                <label for="cardNumber">Card Number *</label>
+                <input type="text" id="cardNumber" class="form-control" placeholder="4242 4242 4242 4242" maxlength="19" value="4242 4242 4242 4242">
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="cardExpiry">Expiration (MM/YY) *</label>
+                  <input type="text" id="cardExpiry" class="form-control" placeholder="12/28" maxlength="5" value="12/28">
+                </div>
+                <div class="form-group">
+                  <label for="cardCvv">Security Code (CVV) *</label>
+                  <input type="password" id="cardCvv" class="form-control" placeholder="888" maxlength="4" value="888">
+                </div>
+              </div>
+            </div>
+
+            <!-- PayPal Notice -->
+            <div id="paypalNotice" class="payment-notice" style="display:none;">
+              You will be seamlessly connected to PayPal for instantaneous, authorized approval upon submitting this order.
+            </div>
+
+            <!-- COD Notice -->
+            <div id="codNotice" class="payment-notice" style="display:none;">
+              Pay via cash or contactless POS upon parcel arrival. An authorized signature is required upon handover.
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Order Summary Column -->
+        <div class="checkout-summary-column">
+          <div class="checkout-summary-card">
+            <h3 class="summary-title">Review Order</h3>
+
+            <!-- Item Rows Preview -->
+            <div id="checkoutOrderItems" class="checkout-items-preview">
+              <!-- Rendered via JS -->
+            </div>
+
+            <div class="summary-rows">
+              <div class="summary-line">
+                <span>Subtotal</span>
+                <span id="checkoutSubtotal">$0.00</span>
+              </div>
+
+              <div class="summary-line discount-line" id="checkoutDiscountRow" style="display:none;">
+                <span>Applied Voucher</span>
+                <span id="checkoutDiscountVal">-$0.00</span>
+              </div>
+
+              <div class="summary-line">
+                <span>Shipping</span>
+                <span id="checkoutShipping">Complimentary</span>
+              </div>
+
+              <div class="summary-line">
+                <span>Estimated Tax (8%)</span>
+                <span id="checkoutTax">$0.00</span>
+              </div>
+
+              <hr class="summary-divider">
+
+              <div class="summary-line total-line">
+                <strong>Grand Total</strong>
+                <strong class="total-amount" id="checkoutTotal">$0.00</strong>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg" id="placeOrderBtn">
+              Authorize & Place Order
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+
+            <div class="trust-icons-row mt-4">
+              <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Encrypted 256-Bit SSL Checkout</span>
+              </div>
+              <div class="trust-item">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>30-Day Money-Back Guarantee</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-bottom">
+        <div>&copy; 2026 Nexus Commerce Inc. All rights reserved.</div>
+        <div>PCI-DSS Level 1 Compliant Checkout Architecture</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
+
